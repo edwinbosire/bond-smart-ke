@@ -1,4 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { 
   TrendingUp, Wallet, ShieldCheck, Plus, ArrowRight, Building2, 
@@ -586,6 +587,7 @@ export default function BondAnalyzer() {
     };
 
     return (
+        <>
         <div className="min-h-screen flex flex-col pb-6 bg-slate-50 text-slate-900 font-sans">
             <header className="bg-emerald-900 text-white p-3 md:p-4 shadow-lg sticky top-0 z-30">
                 <div className="max-w-7xl mx-auto flex flex-col gap-4">
@@ -681,5 +683,7 @@ export default function BondAnalyzer() {
 
             {showAddModal && <div className="fixed inset-0 bg-slate-900/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"><div className="bg-white rounded-xl shadow-2xl max-w-md w-full p-6 transform transition-all scale-100"><div className="flex justify-between items-center mb-4"><h3 className="text-lg font-bold text-slate-800">Add Custom Bond</h3><button onClick={() => setShowAddModal(false)}><X className="text-slate-400" /></button></div><div className="space-y-4"><div><label className="block text-xs font-bold text-slate-500 uppercase mb-1">Bond Issue Name</label><input type="text" className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none" placeholder="e.g., FXD1/2026/05" value={newBond.issueNo} onChange={e => setNewBond({...newBond, issueNo: e.target.value})} /></div><div className="grid grid-cols-2 gap-4"><div><label className="block text-xs font-bold text-slate-500 uppercase mb-1">Type</label><select className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none" value={newBond.type} onChange={e => setNewBond({...newBond, type: e.target.value})}><option value="FXD">Fixed (FXD)</option><option value="IFB">Infrastructure (IFB)</option></select></div><div><label className="block text-xs font-bold text-slate-500 uppercase mb-1">Tenor (Years)</label><input type="number" className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none" value={newBond.tenor} onChange={e => setNewBond({...newBond, tenor: Number(e.target.value)})} /></div></div><div className="grid grid-cols-2 gap-4"><div><label className="block text-xs font-bold text-slate-500 uppercase mb-1">Price</label><input type="number" className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none" value={newBond.price} onChange={e => setNewBond({...newBond, price: Number(e.target.value)})} /></div><div><label className="block text-xs font-bold text-slate-500 uppercase mb-1">Coupon (%)</label><input type="number" className="w-full bg-slate-50 border border-slate-200 p-2.5 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 focus:outline-none" value={newBond.coupon} onChange={e => setNewBond({...newBond, coupon: Number(e.target.value)})} /></div></div></div><div className="flex justify-end gap-3 mt-8"><button onClick={() => setShowAddModal(false)} className="px-4 py-2 text-slate-600 hover:bg-slate-100 rounded-lg text-sm font-medium">Cancel</button><button onClick={handleAddBond} className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 text-sm font-medium shadow-lg shadow-emerald-200">Add Bond</button></div></div></div>}
         </div>
+        <Analytics />
+        </>
     );
 }
