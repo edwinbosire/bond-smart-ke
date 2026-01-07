@@ -8,11 +8,21 @@ Instructions to install dependencies and run the React app with Vite.
 
 ## Setup
 
-1) Install dependencies:
+1. Install dependencies:
 
 ```
 npm install
 ```
+
+2. Configure environment variables:
+
+Copy the `.env.example` file to `.env` and add your Google Gemini API key:
+
+```
+cp .env.example .env
+```
+
+Then edit `.env` and replace `your_api_key_here` with your actual Gemini API key from [Google AI Studio](https://makersuite.google.com/app/apikey).
 
 ## Run the dev server
 

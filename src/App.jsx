@@ -206,7 +206,14 @@ const EducationPage = () => {
         if (!question.trim()) return;
         setIsAsking(true);
         setAnswer(null);
-        const apiKey = ""; 
+        const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+        
+        if (!apiKey) {
+            setAnswer("API key not configured. Please add VITE_GEMINI_API_KEY to your .env file.");
+            setIsAsking(false);
+            return;
+        }
+        
         try {
             const prompt = `You are a friendly financial tutor for the Kenyan Bond Market. 
             User Question: "${question}"
@@ -387,7 +394,14 @@ const BondDetailView = ({ bond, onClose, isMobile }) => {
     const handleAiAnalysis = async () => {
         setIsAnalyzing(true);
         setAiAnalysis(null);
-        const apiKey = ""; 
+        const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+        
+        if (!apiKey) {
+            setAiAnalysis("API key not configured. Please add VITE_GEMINI_API_KEY to your .env file.");
+            setIsAnalyzing(false);
+            return;
+        }
+        
         try {
             const prompt = `Analyze this Kenyan Government Bond for a retail investor:
             Issue: ${bond.issueNo}
@@ -531,9 +545,9 @@ const BondDetailView = ({ bond, onClose, isMobile }) => {
 // --- Main App ---
 export default function BondAnalyzer() {
     const [activeTab, setActiveTab] = useState('market'); // 'market', 'education'
-    const [selectedDate, setSelectedDate] = useState(new Date('2026-01-05'));
+    const [selectedDate, setSelectedDate] = useState(new Date('2026-01-07'));
     const [bonds, setBonds] = useState(BASE_BONDS);
-    const [investmentAmount, setInvestmentAmount] = useState(100000);
+    const [investmentAmount, setInvestmentAmount] = useState(1000000);
     const [selectedBondId, setSelectedBondId] = useState(null);
     const [showMobileDetail, setShowMobileDetail] = useState(false);
     const [isSyncing, setIsSyncing] = useState(false);
