@@ -1,5 +1,19 @@
 # Bond Smart Kenya
 
+<img width="3018" height="1640" alt="image" src="https://github.com/user-attachments/assets/448812ef-b439-4387-8161-65fb6012f32e" />
+
+A tool to analyse treasury bonds offered by the [Central Bank of Kenya](https://www.centralbank.go.ke/securities/treasury-bonds/)
+
+This tool takes the information published on the bond prospectus and surfaces crucial information like:
+- Yield
+- Net returns %
+- Taxable amount
+- Z-Scores to compare performance with the rest of the market
+- Yield History (W.I.P requires historical data)
+- AI Powered analysis breakdown
+- Learning center to debunk all the terminology
+
+## Installation
 Instructions to install dependencies and run the React app with Vite.
 
 ## Prerequisites
